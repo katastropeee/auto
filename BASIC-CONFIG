@@ -110,7 +110,7 @@ ansible_network_os=ios
 @@COREbaba
 
 config t
-hostname COREbaba_
+hostname COREbaba31
 enable secret pass
 service password-encryption
 no logging console
@@ -124,27 +124,27 @@ login local
 Int Gi 0/1
 no shutdown
 no switchport
-ip add 10._._.4 255.255.255.0
+ip add 10.31.31.4 255.255.255.0
 Int Vlan 1
 no shutdown
-ip add 10._.1.4 255.255.255.0
+ip add 10.31.1.4 255.255.255.0
 description MGMTDATA
 Int Vlan 10
 no shutdown
-ip add 10._.10.4 255.255.255.0
+ip add 10.31.10.4 255.255.255.0
 description WIRELESS
 Int Vlan 50
 no shutdown
-ip add 10._.50.4 255.255.255.0
+ip add 10.31.50.4 255.255.255.0
 description IPCCTV
 Int Vlan 100
 no shutdown
-ip add 10._.100.4 255.255.255.0
+ip add 10.31.100.4 255.255.255.0
 description VOICEVLAN
 end
 conf t
 ip routing
-ip route 0.0.0.0 0.0.0.0 10._._.1
+ip route 0.0.0.0 0.0.0.0 10.31.31.1
 end
 
 #ENABLE SSH CONNECTION
@@ -171,7 +171,7 @@ crypto key generate rsa general-keys modulus 2048
 @@CUCM
 
 config t
-hostname CUCM_
+hostname CUCM31
 enable secret pass
 service password-encryption
 no logging console
@@ -184,11 +184,11 @@ transport input all
 login local
 Int Fa 0/0
 no shutdown
-ip add 10._.100.8 255.255.255.0 
+ip add 10.31.100.8 255.255.255.0 
 end
 conf t
 ip routing
-ip route 0.0.0.0 0.0.0.0 10._.100.4
+ip route 0.0.0.0 0.0.0.0 10.31.100.4
 end
 
 #ENABLE SSH CONNECTION
@@ -215,7 +215,7 @@ crypto key generate rsa general-keys modulus 2048
 @@EDGE
 
 config t
-hostname EDGE_
+hostname EDGE31
 enable secret pass
 service password-encryption
 no logging console
@@ -228,19 +228,19 @@ transport input all
 login local
 Int Gi 0/0/0
 description INSIDE
-ip add 10._._.1 255.255.255.0
+ip add 10.31.31.1 255.255.255.0
 no shutdown
 Int Gi 0/0/1
 description PLDT-ME-WAN
-ip add 200.0.0._ 255.255.255.0
+ip add 200.0.0.31 255.255.255.0
 no shutdown
 Int Loopback 0
 description VIRTUALIP
-ip add _.0.0.1 255.255.255.255
+ip add 31.0.0.1 255.255.255.255
 end
 conf t
 ip routing
-ip route 10._.0.0 255.255.0.0 10._._.4
+ip route 10.31.0.0 255.255.0.0 10.31.31.4
 end
 
 
