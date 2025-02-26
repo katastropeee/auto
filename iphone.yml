@@ -1,4 +1,4 @@
----
+#---
 #- name: Configure ANALOG, IP PHONES, VIDEO CALL
 #  hosts: cucm  # Replace with the appropriate host or group
 #  gather_facts: no  # Disable fact gathering for network devices
@@ -10,16 +10,16 @@
         commands:
           - configure terminal
           - dial-peer voice 1 pots
-          - destination-pattern _00
+          - destination-pattern 3100
           - port 0/0/0
           - dial-peer voice 2 pots
-          - destination-pattern _01
+          - destination-pattern 3101
           - port 0/0/1
           - dial-peer voice 3 pots
-          - destination-pattern _02
+          - destination-pattern 3102
           - port 0/0/2
           - dial-peer voice 4 pots
-          - destination-pattern _03
+          - destination-pattern 3103
           - port 0/0/3
           - end
       vars:
@@ -35,31 +35,31 @@
           - no auto-reg-ephone
           - max-ephones 5
           - max-dn 20
-          - ip source-address 10._.100.8 port 2000
+          - ip source-address 10.31.100.8 port 2000
           - create cnf-files
           - ephone-dn 1
-          - number _11
+          - number 3111
           - ephone-dn 2
-          - number _22
+          - number 3122
           - ephone-dn 3
-          - number _33
+          - number 3133
           - ephone-dn 4
-          - number _44
+          - number 3144
           - ephone-dn 5
-          - number _55
+          - number 3155
           - ephone-dn 6
           - number _66
           - ephone-dn 7
-          - number _77
+          - number 3177
           - ephone-dn 8
-          - number _88
+          - number 3188
           - ephone 1
-          - Mac-address ___.____.___
+          - Mac-address 6cfa.8972.f0a9
           - type 8945
           - button 1:1 2:3 3:2 4:4
           - restart
           - ephone 2
-          - Mac-address ____.____.____
+          - Mac-address 8478.aced.5847
           - type 8945
           - button 1:5 2:6 3:7 4:8
           - restart
@@ -93,8 +93,8 @@
         commands:
           - configure terminal
           - router ospf 1
-          - router-id 10._.100.8
-          - network 10._.100.0 0.0.0.255 area 0
+          - router-id 10.31.100.8
+          - network 10.31.100.0 0.0.0.255 area 0
           - end
       vars:
         ansible_network_os: ios
